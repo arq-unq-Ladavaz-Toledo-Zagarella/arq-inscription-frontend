@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Router } from "@angular/router";
+import { environment } from "../../environments/environment"
 import 'rxjs/add/operator/map'
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent {
   constructor(private http: Http, private router: Router) { }
 
   login() {
-  	return this.http.get('http://localhost:8080/arq-inscription-backend/rest/students/login/' + 
+  	return this.http.get('${environment.apiEndpoint}/students/login/' + 
       this.username + '/' + this.password)
         .subscribe(
           result => {
