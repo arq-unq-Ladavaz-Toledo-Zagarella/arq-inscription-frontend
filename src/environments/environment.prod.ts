@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpoint: process.env.apiEndpoint
+  apiEndpoint: 'https://inscripciones-tpi-lids-api.herokuapp.com/rest'
 };

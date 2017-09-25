@@ -16,7 +16,8 @@ export class LoginComponent {
   constructor(private http: Http, private router: Router) { }
 
   login() {
-  	return this.http.get('${environment.apiEndpoint}/students/login/' + 
+  console.log(environment.apiEndpoint)
+  	return this.http.get(environment.apiEndpoint + '/students/login/' + 
       this.username + '/' + this.password)
         .subscribe(
           result => {
