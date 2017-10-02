@@ -14,9 +14,9 @@
       <div class="col-sm-4">              
         <div class="form-group">
            <label for="usr">Usuario</label>
-            <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username">
+            <input type="text" class="form-control" id="inputUsername" [(ngModel)]="username" readonly>
           <label for="pwd">Contraseña</label>
-          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password">
+          <input type="password" class="form-control" id="inputPassword" [(ngModel)]="password" readonly>
         </div>          
         <div class="text-center">
           <button type="button" class="btn btn-primary btn-lg btn-block" (click)="login()">Comenzar</button>

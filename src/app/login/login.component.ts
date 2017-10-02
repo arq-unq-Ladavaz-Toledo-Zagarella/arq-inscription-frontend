@@ -10,8 +10,8 @@ import 'rxjs/add/operator/map'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = ""
-  password = ""
+  username = "usuariodeprueba"
+  password = "usuariodeprueba"
 
   constructor(private http: Http, private router: Router) { }
 

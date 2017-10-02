@@ -1,22 +1,30 @@
 <section id="lids">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <div class="container text-center">
-          <h1>Materias</h1>
-        </div>
-        <ul class="list-group" *ngFor="let subject of subjects">
-		  <li class="list-group-item">{{subject.name}}</li>
+      <div class="col">
+        <h2>Buscar materias</h2>
+        <input type="text" class="form-control" placeholder="Matemática, Bases de Datos, Organización de Computadoras..." aria-describedby="basic-addon2" [(ngModel)]="filter" (ngModelChange)="search()">
+		    <div class="filterList" *ngIf="isThereAnySubjectFound()">
+				<div class="list-group" *ngFor="let subject of subjectsFound; let i = index" [attr.data-index]="i">
+				  <button type="button" class="btn-block list-group-item list-group-item-action subjects-found" (click)="selectSubject(i)">
+				  <strong>{{subject.name}}</strong></button>
+				</div>
+			</div>
+      </div>
+      <div class="col">
+        <h2>Materias seleccionadas</h2>                
+        <ul class="list-group" *ngFor="let subject of selectedSubjects; let i = index" [attr.data-index]="i">
+		  <li class="list-group-item">{{subject.name}}
+		  	<button type="button" class="close" aria-label="Close" (click)="unselectSubject(i)">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		  </li>
 		</ul>
-	      <!-- Button -->
-	    <div class="form-group">
-	       	<label class="col-md-4 control-label" for="singlebutton"></label>
-	        <div class="col-md-6">
-	        	<a href="#" class="btn btn-primary btn-lg btn-block btn-huge">Enviar</a>
-	      	</div>
-	    </div>
       </div>
     </div>
   </div>
 </section>
-
+<hr>
+<div class="col-lg-2 col-centered">
+	<button type="button" class="btn btn-primary btn-lg btn-block" (click)="send()">Finalizar</button>	
+</div>
