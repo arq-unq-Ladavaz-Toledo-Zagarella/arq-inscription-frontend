@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Router } from "@angular/router";
 
 import { RouterModule } from '@angular/router';
 @Component({
@@ -9,4 +9,11 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'app'
+
+  constructor(private router: Router) { }
+
+  logout() {
+  	sessionStorage.removeItem("id")
+    this.router.navigate(['/'])
+  }
 }

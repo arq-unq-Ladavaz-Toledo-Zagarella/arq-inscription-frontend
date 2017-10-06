@@ -5,30 +5,26 @@ import { environment } from "../../environments/environment"
 import 'rxjs/add/operator/map'
 
 @Component({
-  selector: 'inscription',
-  templateUrl: './inscription.component.html',
-  styleUrls: ['./inscription.component.css']
+  selector: 'create-inscription',
+  inputs: ['subjects'],
+  templateUrl: './create-inscription.component.html',
+  styleUrls: ['./create-inscription.component.css']
 })
-export class InscriptionComponent {
+export class CreateInscriptionComponent {
   filter= ""
   subjects= []
   subjectsFound= []
   selectedSubjects= []
 
-  constructor(private http: Http, private router: Router) { 	
-    this.http.get(environment.apiEndpoint + '/subjects/list').map(res => res.json())
-  	.subscribe(
-      result => {
-        this.subjects= result
-      },
-      error => { });
-	}
+  constructor(private http: Http, private router: Router) {
+    this.findSubjects()
+  }
 
   send() {
     this.http.post(environment.apiEndpoint + '/inscriptions/create/1', this.selectedSubjects).map(res => res.json())
     .subscribe(
       result => {
-        this.subjects= result
+        this.router.navigate(['/my-inscription', result.id])
       },
       error => { });
   }
@@ -78,5 +74,19 @@ export class InscriptionComponent {
 
   isThereAnySubjectFound() {
     return this.subjectsFound != []
+  }
+
+  ngOnInit() {
+    if(sessionStorage.getItem("id") === null)
+      this.router.navigate(['/'])
+  }
+
+  findSubjects() {
+    this.http.get(environment.apiEndpoint + '/subjects/list').map(res => res.json())
+    .subscribe(
+      result => {
+        this.subjects= result
+      },
+      error => { });
   }
 }

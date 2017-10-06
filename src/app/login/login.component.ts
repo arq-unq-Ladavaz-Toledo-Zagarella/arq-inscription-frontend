@@ -16,16 +16,13 @@ export class LoginComponent {
   constructor(private http: Http, private router: Router) { }
 
   login() {
-  console.log(environment.apiEndpoint)
   	return this.http.get(environment.apiEndpoint + '/students/login/' + 
-      this.username + '/' + this.password)
+      this.username + '/' + this.password).map(res => res.json())
         .subscribe(
           result => {
-            console.log(result)
+            sessionStorage.setItem("id", result)
+            this.router.navigate(['create-inscription'])
           },
-          error => { },
-          () => {
-            this.router.navigate(['inscription'])
-          });
+          error => { });
   }
 }

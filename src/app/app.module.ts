@@ -7,13 +7,15 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { InscriptionComponent } from './inscription/inscription.component';
+import { CreateInscriptionComponent } from './create-inscription/create-inscription.component';
+import { MyInscriptionComponent } from './my-inscription/my-inscription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InscriptionComponent
+    CreateInscriptionComponent,
+    MyInscriptionComponent
   ],
   imports: [
     BrowserModule,
