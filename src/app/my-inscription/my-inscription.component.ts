@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map'
 
 export class MyInscriptionComponent {
 	id= null
-	inscription= {}
+	inscription= {subjects: {}}
 
   constructor(private http: Http, private route: ActivatedRoute, private router: Router) { 	}
 
